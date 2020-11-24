@@ -1,29 +1,33 @@
 {
-  "name": "electron-guide",
-  "version": "1.0.0",
-  "description": "",
+  "name": "electron-webview",
+  "productName": "Electron webview",
+  "version": "1.0.4",
+  "description": "A simple Electron webview application",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-builder build --win --publish never",
-"deploy": "electron-builder build --win --publish always"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Webview\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ webview-darwin-x64/Electron\\ webview.app electron-webview --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jenseneducation-Lukas-Tucker/electron-guide.git"
+    "url": "git+https://github.com/cba85/electron-webview.git"
   },
-  "author": "Lukas Tucker",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Jenseneducation-Lukas-Tucker/electron-guide/issues"
-  },
-  "homepage": "https://github.com/Jenseneducation-Lukas-Tucker/electron-guide#readme",
+  "keywords": [
+    "Electron",
+    "webview"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^11.0.2",
-    "electron-builder": "^22.9.1"
+    "electron": "^10.0.0",
+    "electron-installer-dmg": "^3.0.0"
   },
-  "dependencies": {
-    "electron-updater": "^4.3.5"
-  }
+  "bugs": {
+    "url": "https://github.com/cba85/electron-webview/issues"
+  },
+  "homepage": "https://github.com/cba85/electron-webview#readme",
+  "dependencies": {}
 }
